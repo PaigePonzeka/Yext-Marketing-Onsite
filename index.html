@@ -15,7 +15,10 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #000000;
-            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            background:
+                radial-gradient(circle at 20% 50%, rgba(57, 97, 232, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(57, 97, 232, 0.03) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #000000 50%, #0a0a0a 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -30,10 +33,11 @@
         }
 
         .header {
-            background: #3961E8;
+            background: #000000;
             color: #FFFFFF;
             padding: 40px 30px;
             text-align: center;
+            border-bottom: 2px solid #3961E8;
         }
 
         .logo {
