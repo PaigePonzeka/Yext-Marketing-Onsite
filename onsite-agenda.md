@@ -17,8 +17,8 @@ Share and discuss individual working styles, preferences, and communication stra
 ### 11:30 - 11:45 AM | Short Break
 Refresh and recharge.
 
-### 11:45 AM - 12:30 PM | TBD (45 minutes)
-*Session to be determined*
+### 11:45 AM - 12:30 PM | Fun and Games
+If time allows, we'll play some games together.
 
 ### 12:30 - 1:30 PM | Lunch Break
 **Catering:** Sharebite

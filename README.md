@@ -39,7 +39,7 @@ See `brand-colors.md` for detailed usage guidelines.
 - 10:00 - 10:30 AM: Warm-up - Two Truths and a Lie
 - 10:30 - 11:30 AM: User Manual Discussion
 - 11:30 - 11:45 AM: Short Break
-- 11:45 AM - 12:30 PM: TBD
+- 11:45 AM - 12:30 PM: Fun and Games
 - 12:30 - 1:30 PM: Lunch Break (Sharebite)
 - 1:30 - 2:30 PM: Web UX/UI Session (Ashley Jackson)
 - 2:30 - 2:45 PM: Afternoon Break
