@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Web Engineering Team On-Site | February 18, 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #000000;
+            overflow: hidden;
+            color: #000000;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            padding: 60px 80px;
+            background: #FFFFFF;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Title Slide */
+        .title-slide {
+            background: #3961E8;
+            color: #FFFFFF;
+            text-align: center;
+            align-items: center;
+        }
+
+        .title-slide .logo {
+            max-width: 300px;
+            margin-bottom: 60px;
+            filter: brightness(0) invert(1);
+        }
+
+        .title-slide h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .title-slide .date {
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .title-slide .location {
+            font-size: 1.5em;
+            opacity: 0.95;
+        }
+
+        /* Content Slides */
+        .content-slide h2 {
+            font-size: 2.5em;
+            color: #3961E8;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 4px solid #3961E8;
+        }
+
+        .session-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 8px solid #3961E8;
+            margin-bottom: 30px;
+        }
+
+        .session-card.break {
+            border-left-color: #95a5a6;
+            background: #ecf0f1;
+        }
+
+        .session-card.lunch {
+            border-left-color: #f39c12;
+            background: #fef5e7;
+        }
+
+        .session-card.tbd {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        .session-time {
+            font-size: 2em;
+            font-weight: 700;
+            color: #3961E8;
+            margin-bottom: 15px;
+        }
+
+        .session-card.break .session-time {
+            color: #95a5a6;
+        }
+
+        .session-card.lunch .session-time {
+            color: #f39c12;
+        }
+
+        .session-card.tbd .session-time {
+            color: #e74c3c;
+        }
+
+        .session-title {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 20px;
+        }
+
+        .session-meta {
+            font-size: 1.4em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .session-meta strong {
+            color: #000000;
+        }
+
+        .session-description {
+            font-size: 1.3em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Agenda Overview Slide */
+        .agenda-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .agenda-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #3961E8;
+        }
+
+        .agenda-item-time {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #3961E8;
+            margin-bottom: 10px;
+        }
+
+        .agenda-item-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        /* Notes Slide */
+        .notes-slide ul {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .notes-slide li {
+            font-size: 1.8em;
+            padding: 30px;
+            margin-bottom: 25px;
+            background: #EEF2FE;
+            border-radius: 8px;
+            border-left: 6px solid #3961E8;
+            position: relative;
+            padding-left: 70px;
+        }
+
+        .notes-slide li:before {
+            content: "→";
+            position: absolute;
+            left: 30px;
+            color: #3961E8;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 40px;
+            right: 60px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: #3961E8;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #2347c5;
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 60px;
+            font-size: 1.2em;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px;
+            }
+
+            .title-slide h1 {
+                font-size: 2.5em;
+            }
+
+            .title-slide .date {
+                font-size: 1.5em;
+            }
+
+            .content-slide h2 {
+                font-size: 2em;
+            }
+
+            .session-title {
+                font-size: 2em;
+            }
+
+            .agenda-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .keyboard-hint {
+            position: fixed;
+            top: 40px;
+            right: 60px;
+            font-size: 0.9em;
+            color: #999;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="keyboard-hint">Use ← → arrow keys or click buttons to navigate</div>
+
+    <div class="presentation">
+        <!-- Slide 1: Title -->
+        <div class="slide active title-slide">
+            <div class="slide-content">
+                <img src="Yext_Logo_Black.svg" alt="Yext Logo" class="logo">
+                <h1>Marketing Web Engineering<br>Team On-Site</h1>
+                <div class="date">Wednesday, February 18th, 2026</div>
+                <div class="location">📍 Yext NYC, 9th Floor</div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Agenda Overview -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>Today's Agenda</h2>
+                <div class="agenda-list">
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">10:00 - 10:30 AM</div>
+                        <div class="agenda-item-title">Warm-up: Two Truths and a Lie</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">10:30 - 11:30 AM</div>
+                        <div class="agenda-item-title">User Manual Discussion</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">11:30 - 11:45 AM</div>
+                        <div class="agenda-item-title">Short Break</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">11:45 AM - 12:30 PM</div>
+                        <div class="agenda-item-title">TBD</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">12:30 - 1:30 PM</div>
+                        <div class="agenda-item-title">Lunch Break</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">1:30 - 2:30 PM</div>
+                        <div class="agenda-item-title">Web UX/UI Session</div>
+                    </div>
+                    <div class="agenda-item">
+                        <div class="agenda-item-time">2:30 - 4:30 PM</div>
+                        <div class="agenda-item-title">Agentic Coding</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Warm-up -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>10:00 - 10:30 AM</h2>
+                <div class="session-card">
+                    <div class="session-title">Warm-up: Two Truths and a Lie</div>
+                    <div class="session-meta"><strong>Location:</strong> Room 921, 9th Floor</div>
+                    <div class="session-description">Get to know the team with a fun icebreaker activity.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: User Manual Discussion -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>10:30 - 11:30 AM</h2>
+                <div class="session-card">
+                    <div class="session-title">User Manual Discussion</div>
+                    <div class="session-meta"><strong>Location:</strong> Room 921, 9th Floor</div>
+                    <div class="session-description">Share and discuss individual working styles, preferences, and communication strategies.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Short Break -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>11:30 - 11:45 AM</h2>
+                <div class="session-card break">
+                    <div class="session-title">Short Break</div>
+                    <div class="session-description">Refresh and recharge.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: TBD -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>11:45 AM - 12:30 PM</h2>
+                <div class="session-card tbd">
+                    <div class="session-title">TBD (45 minutes)</div>
+                    <div class="session-description">Session to be determined.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Lunch -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>12:30 - 1:30 PM</h2>
+                <div class="session-card lunch">
+                    <div class="session-title">Lunch Break</div>
+                    <div class="session-meta"><strong>Catering:</strong> Sharebite</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Web UX/UI Session -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>1:30 - 2:30 PM</h2>
+                <div class="session-card">
+                    <div class="session-title">Web UX/UI Session</div>
+                    <div class="session-meta"><strong>Facilitator:</strong> Ashley Jackson</div>
+                    <div class="session-description">Explore UX/UI best practices and design principles for web development.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Agentic Coding -->
+        <div class="slide content-slide">
+            <div class="slide-content">
+                <h2>2:30 - 4:30 PM</h2>
+                <div class="session-card">
+                    <div class="session-title">Agentic Coding</div>
+                    <div class="session-meta"><strong>Facilitator:</strong> Joe Kwon</div>
+                    <div class="session-description">Hands-on session exploring AI-assisted development and coding practices.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Important Notes -->
+        <div class="slide content-slide notes-slide">
+            <div class="slide-content">
+                <h2>Important Notes</h2>
+                <ul>
+                    <li>Please arrive by 10:00 AM</li>
+                    <li>All morning sessions will be held in Room 921</li>
+                    <li>Lunch will be provided via Sharebite</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">10</span>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prev-btn" onclick="previousSlide()">← Previous</button>
+        <button class="nav-button" id="next-btn" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const currentSlideCounter = document.getElementById('current-slide');
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            slides[index].classList.add('active');
+            currentSlideCounter.textContent = index + 1;
+
+            // Update button states
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+        document.getElementById('total-slides').textContent = totalSlides;
+    </script>
+</body>
+</html>
