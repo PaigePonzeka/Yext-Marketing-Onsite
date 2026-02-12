@@ -42,4 +42,8 @@ See `brand-colors.md` for detailed usage guidelines.
 - 11:45 AM - 12:30 PM: TBD
 - 12:30 - 1:30 PM: Lunch Break (Sharebite)
 - 1:30 - 2:30 PM: Web UX/UI Session (Ashley Jackson)
-- 2:30 - 4:30 PM: Agentic Coding (Joe Kwon)
+- 2:30 - 2:45 PM: Afternoon Break
+- 2:45 - 4:00 PM: Agentic Coding (Joe Kwon)
+- 4:00 PM: Departure to Lawn Club
+- 4:30 - 6:00 PM: Lawn Club NYC - Private lawn activities
+- 6:15 PM: Dinner at Il Brigante

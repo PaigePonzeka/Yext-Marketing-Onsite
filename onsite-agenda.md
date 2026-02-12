@@ -27,9 +27,23 @@ Refresh and recharge.
 **Facilitator:** Ashley Jackson
 Explore UX/UI best practices and design principles for web development.
 
-### 2:30 - 4:30 PM | Agentic Coding
+### 2:30 - 2:45 PM | Afternoon Break
+Short break before the afternoon session.
+
+### 2:45 - 4:00 PM | Agentic Coding
 **Facilitator:** Joe Kwon
 Hands-on session exploring AI-assisted development and coding practices.
+
+### 4:00 PM | Departure to Lawn Club
+Head to Lawn Club NYC for evening activities.
+
+### 4:30 - 6:00 PM | Lawn Club NYC
+**Location:** Lawn Club NYC
+Evening of fun competition on our private lawn featuring Bocce, Ladders, Cornhole, Lawn Pong, KanJam, and more.
+
+### 6:15 PM | Dinner at Il Brigante
+**Location:** 214 Front St, New York, NY 10038
+Classic, brick-walled trattoria specializing in the traditional flavors of Calabria and Southern Italy.
 
 ---
 
@@ -37,3 +51,4 @@ Hands-on session exploring AI-assisted development and coding practices.
 - Please arrive by 10:00 AM
 - All morning sessions will be held in Room 921
 - Lunch will be provided via Sharebite
+- Transportation to Lawn Club departs at 4:00 PM
